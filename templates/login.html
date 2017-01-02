@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} User {% endblock %}
+
+{% block page_content %}
+    <h1>Авторизация</h1>
+    <form method="POST" action="" name="login">
+        {{ form.csrf_token }}
+        <p>
+            Пользователь<br> {{ form.username(size=20) }}<br>
+            {% for error in form.errors.username %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            Пароль<br> {{ form.password(size=20) }}<br>
+            {% for error in form.errors.password %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}
